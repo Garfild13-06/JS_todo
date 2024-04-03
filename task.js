@@ -3,12 +3,13 @@ const tasks__input = form.querySelector('.tasks__input')
 const tasks__list = document.querySelector('.tasks__list')
 
 if (localStorage.getItem('tasks__list') != null) {
-    tasks__list.outerHTML = localStorage.getItem('tasks__list')
+    tasks__list.innerHTML = localStorage.getItem('tasks__list')
 }
+
 tasks__list.addEventListener('click', (e) => {
     if (e.target && e.target.classList.contains('task_remove')) {
         e.target.parentElement.remove()
-        localStorage.setItem('tasks__list', tasks__list.outerHTML)
+        localStorage.setItem('tasks__list', tasks__list.innerHTML)
     }
 })
 
@@ -32,5 +33,8 @@ form.addEventListener('submit', (e) => {
     div__new_task.appendChild(a__task_remove)
 
     form.reset()
-    localStorage.setItem('tasks__list', tasks__list.outerHTML)
+    localStorage.setItem('tasks__list', tasks__list.innerHTML)
+
 })
+
+
